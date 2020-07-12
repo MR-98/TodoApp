@@ -1,15 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {Task} from '../../models/task';
+import {TodoService} from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent implements OnInit{
 
-  constructor() { }
+  open: Task[];
+  inProgress: Task[];
+  done: Task[];
 
-  ngOnInit(): void {
+
+  constructor(private todoService: TodoService) {
   }
 
+  ngOnInit(): void {
+    this.open = this.todoService.getOpenTodos();
+    this.inProgress = this.todoService.getInProgressTodos();
+    this.done = this.todoService.getDoneTodos();
+  }
+
+  drop(event: CdkDragDrop<Task[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
+  }
 }

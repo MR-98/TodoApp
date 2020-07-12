@@ -8,6 +8,10 @@ import {RouterModule} from '@angular/router';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NoopAnimationsModule,
     AppRoutingModule,
     RouterModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    DragDropModule,
+    MatDividerModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

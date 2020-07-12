@@ -1,1 +1,70 @@
-<p>todo-list works!</p>
+<div class="container">
+  <div class="drag-container">
+    <h2>Do zrobienia</h2>
+
+    <div cdkDropList #openList="cdkDropList" [cdkDropListData]="open"
+         [cdkDropListConnectedTo]="[inProgressList,doneList]"
+         class="item-list" (cdkDropListDropped)="drop($event)">
+      <div class="item-box" *ngFor="let item of open" cdkDrag>
+        <div class="title-section">
+          <button mat-icon-button color="basic" class="edit-button">
+            <mat-icon [inline]="true">edit</mat-icon>
+          </button>
+          <p>{{item.name}}</p>
+        </div>
+        <div class="details-section">
+          <p>{{item.priority}}</p>
+          <p>24/07/2020</p>
+        </div>
+        <mat-divider></mat-divider>
+        <p>Opis: {{item.description}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="drag-container">
+    <h2>W toku</h2>
+
+    <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
+         [cdkDropListConnectedTo]="[openList,doneList]"
+         class="item-list" (cdkDropListDropped)="drop($event)">
+      <div class="item-box" *ngFor="let item of inProgress" cdkDrag>
+        <div class="title-section">
+          <button mat-icon-button color="basic" class="edit-button">
+            <mat-icon [inline]="true">edit</mat-icon>
+          </button>
+          <p>{{item.name}}</p>
+        </div>
+        <div class="details-section">
+          <p>{{item.priority}}</p>
+          <p>24/07/2020</p>
+        </div>
+        <mat-divider></mat-divider>
+        <p>Opis: {{item.description}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="drag-container">
+    <h2>Gotowe</h2>
+
+    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+         [cdkDropListConnectedTo]="[inProgressList,openList]"
+         class="item-list" (cdkDropListDropped)="drop($event)">
+      <div class="item-box" *ngFor="let item of done" cdkDrag>
+        <div class="title-section">
+          <button mat-icon-button color="basic" class="edit-button">
+            <mat-icon [inline]="true">edit</mat-icon>
+          </button>
+          <p>{{item.name}}</p>
+        </div>
+        <div class="details-section">
+          <p>{{item.priority}}</p>
+          <p>24/07/2020</p>
+        </div>
+        <mat-divider></mat-divider>
+        <p>Opis: {{item.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
