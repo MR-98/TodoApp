@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {Task} from '../../models/task';
 import {TodoService} from '../../services/todo.service';
+import {Status} from '../../models/status';
+import {Priority} from '../../models/priority';
 
 @Component({
   selector: 'app-todo-list',
@@ -33,5 +35,9 @@ export class TodoListComponent implements OnInit{
         event.previousIndex,
         event.currentIndex);
     }
+  }
+
+  addNewTask() {
+    this.open.unshift(new Task('Tu wprowadź swoją nazwę', Status.Open, '', Priority.Medium));
   }
 }

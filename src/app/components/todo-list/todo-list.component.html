@@ -1,3 +1,6 @@
+<div class="button-container">
+  <button mat-raised-button color="primary" (click)="addNewTask()">Dodaj nowe zadanie</button>
+</div>
 <div class="container">
   <div class="drag-container">
     <h2>Do zrobienia</h2>
@@ -16,8 +19,10 @@
           <p>{{item.priority}}</p>
           <p>24/07/2020</p>
         </div>
-        <mat-divider></mat-divider>
-        <p>Opis: {{item.description}}</p>
+        <div *ngIf="item.description.length !=0">
+          <mat-divider></mat-divider>
+          <p>Opis: {{item.description}}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -39,8 +44,10 @@
           <p>{{item.priority}}</p>
           <p>24/07/2020</p>
         </div>
-        <mat-divider></mat-divider>
-        <p>Opis: {{item.description}}</p>
+        <div *ngIf="item.description.length !=0">
+          <mat-divider></mat-divider>
+          <p>Opis: {{item.description}}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -62,8 +69,10 @@
           <p>{{item.priority}}</p>
           <p>24/07/2020</p>
         </div>
-        <mat-divider></mat-divider>
-        <p>Opis: {{item.description}}</p>
+        <div *ngIf="item.description.length !=0">
+          <mat-divider></mat-divider>
+          <p>Opis: {{item.description}}</p>
+        </div>
       </div>
     </div>
   </div>
