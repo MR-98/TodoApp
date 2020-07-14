@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Task} from '../models/task';
 import {Status} from '../models/status';
 import {Priority} from '../models/priority';
-import {BehaviorSubject, Observable, of} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +62,16 @@ export class TodoService {
       const objIndex = this.done.findIndex((obj => obj.id === id));
       this.done[objIndex] = todo;
       this.doneSubject.next(this.done);
+    }
+  }
+
+  changeStatus(task: Task, targetStatus: Status, targetIndex: number) {
+    if (targetStatus === Status.Open) {
+      this.open[targetIndex].status = Status.Open;
+    } else if (targetStatus === Status.InProgress) {
+      this.inProgress[targetIndex].status = Status.InProgress;
+    } else {
+      this.done[targetIndex].status = Status.Done;
     }
   }
 }

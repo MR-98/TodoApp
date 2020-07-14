@@ -11,11 +11,15 @@ import {Router} from '@angular/router';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent implements OnInit{
+export class TodoListComponent implements OnInit {
 
   open: Task[];
   inProgress: Task[];
   done: Task[];
+
+  firstListId = '0';
+  secondListId = '1';
+  thirdListId = '2';
 
 
   constructor(private todoService: TodoService, private router: Router) {
@@ -41,6 +45,7 @@ export class TodoListComponent implements OnInit{
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+      this.changeStatus(event);
     }
   }
 
@@ -49,6 +54,20 @@ export class TodoListComponent implements OnInit{
   }
 
   editTodo(item: Task) {
-    this.router.navigate(['editTodo'], { queryParams: { id: item.id } });
+    this.router.navigate(['editTodo'], {queryParams: {id: item.id}});
+  }
+
+  changeStatus(event: CdkDragDrop<Task[]>) {
+    let targetStatus: Status;
+
+    if (event.container.id === '0') {
+      targetStatus = Status.Open;
+    } else if (event.container.id === '1') {
+      targetStatus = Status.InProgress;
+    } else {
+      targetStatus = Status.Done;
+    }
+
+    this.todoService.changeStatus(event.container.data[event.currentIndex], targetStatus, event.currentIndex);
   }
 }
