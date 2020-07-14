@@ -1,5 +1,5 @@
 <div class="button-container">
-  <button mat-raised-button color="primary" (click)="addNewTask()">Dodaj nowe zadanie</button>
+  <button mat-raised-button class="button-std" (click)="addNewTask()">Dodaj nowe zadanie</button>
 </div>
 <div class="container">
   <div class="drag-container">
@@ -10,14 +10,14 @@
          class="item-list" (cdkDropListDropped)="drop($event)">
       <div class="item-box" *ngFor="let item of open" cdkDrag>
         <div class="title-section">
-          <button mat-icon-button color="basic" class="edit-button">
+          <button mat-icon-button color="basic" class="edit-button" (click)="editTodo(item)">
             <mat-icon [inline]="true">edit</mat-icon>
           </button>
           <p>{{item.name}}</p>
         </div>
         <div class="details-section">
           <p>{{item.priority}}</p>
-          <p>24/07/2020</p>
+          <p>{{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
         </div>
         <div *ngIf="item.description.length !=0">
           <mat-divider></mat-divider>
@@ -42,7 +42,7 @@
         </div>
         <div class="details-section">
           <p>{{item.priority}}</p>
-          <p>24/07/2020</p>
+          <p>{{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
         </div>
         <div *ngIf="item.description.length !=0">
           <mat-divider></mat-divider>
@@ -67,7 +67,7 @@
         </div>
         <div class="details-section">
           <p>{{item.priority}}</p>
-          <p>24/07/2020</p>
+          <p>{{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
         </div>
         <div *ngIf="item.description.length !=0">
           <mat-divider></mat-divider>

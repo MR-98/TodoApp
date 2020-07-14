@@ -8,7 +8,7 @@
 .drag-container {
   width: 30%;
   display: inline-block;
-  background-color: #7D98A1;
+  background-color: #ADC698;
   padding: 15px;
   border-radius: 5px;
 }
@@ -20,7 +20,8 @@
 }
 
 .item-box {
-  background-color: #037171;
+  color: black;
+  background-color: #EBEBD3;
   margin-bottom: 2%;
   padding: 5px;
   border: solid 1px #ccc;

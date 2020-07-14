@@ -4,6 +4,7 @@ import {Task} from '../../models/task';
 import {TodoService} from '../../services/todo.service';
 import {Status} from '../../models/status';
 import {Priority} from '../../models/priority';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -17,13 +18,19 @@ export class TodoListComponent implements OnInit{
   done: Task[];
 
 
-  constructor(private todoService: TodoService) {
+  constructor(private todoService: TodoService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.open = this.todoService.getOpenTodos();
-    this.inProgress = this.todoService.getInProgressTodos();
-    this.done = this.todoService.getDoneTodos();
+    this.todoService.getOpenTodos().subscribe(todos => {
+      this.open = todos;
+    });
+    this.todoService.getInProgressTodos().subscribe(todos => {
+      this.inProgress = todos;
+    });
+    this.todoService.getDoneTodos().subscribe(todos => {
+      this.done = todos;
+    });
   }
 
   drop(event: CdkDragDrop<Task[]>) {
@@ -38,6 +45,10 @@ export class TodoListComponent implements OnInit{
   }
 
   addNewTask() {
-    this.open.unshift(new Task('Tu wprowadź swoją nazwę', Status.Open, '', Priority.Medium));
+    this.open.unshift(new Task('Tu wprowadź swoją nazwę', Status.Open, '', undefined, Priority.Medium));
+  }
+
+  editTodo(item: Task) {
+    this.router.navigate(['editTodo'], { queryParams: { id: item.id } });
   }
 }

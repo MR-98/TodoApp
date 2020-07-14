@@ -1,0 +1,43 @@
+<div class="main-container">
+  <h2>Edytuj zadanie</h2>
+
+  <form [formGroup]="editTodoForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="form-wide">
+      <mat-label>Nazwa</mat-label>
+      <input matInput placeholder="Przykładowa nazwa" formControlName="name">
+    </mat-form-field>
+
+    <br/>
+
+    <mat-form-field class="form-wide">
+      <mat-label>Priorytet</mat-label>
+      <mat-select formControlName="priority">
+        <mat-option value="Wysoki">Wysoki</mat-option>
+        <mat-option value="Średni">Średni</mat-option>
+        <mat-option value="Niski">Niski</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br/>
+
+    <mat-form-field class="form-wide">
+      <mat-label>Termin zadania</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="deadline">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker color="primary"></mat-datepicker>
+    </mat-form-field>
+
+    <br/>
+
+    <mat-form-field class="form-wide">
+      <mat-label>Opis</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <div class="buttons-container">
+      <button mat-raised-button class="button-std" type="submit">Zapisz</button>
+      <button mat-raised-button class="button-discard" color="warn" (click)="discardChanges()">Anuluj</button>
+    </div>
+  </form>
+</div>
