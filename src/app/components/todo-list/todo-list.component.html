@@ -30,7 +30,7 @@
             {{item.priority}}</p>
           <p>
             <fa-icon [icon]="clock"></fa-icon>
-            {{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
+            {{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd/MM/yyyy'}}</p>
         </div>
         <div *ngIf="item.description.length !=0">
           <mat-divider></mat-divider>
@@ -68,7 +68,7 @@
             {{item.priority}}</p>
           <p>
             <fa-icon [icon]="clock"></fa-icon>
-            {{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
+            {{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd/MM/yyyy'}}</p>
         </div>
         <div *ngIf="item.description.length !=0">
           <mat-divider></mat-divider>
@@ -106,7 +106,7 @@
             {{item.priority}}</p>
           <p>
             <fa-icon [icon]="clock"></fa-icon>
-            {{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
+            {{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd/MM/yyyy'}}</p>
         </div>
         <div *ngIf="item.description.length !=0">
           <mat-divider></mat-divider>
