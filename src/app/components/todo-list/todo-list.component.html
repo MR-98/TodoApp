@@ -5,6 +5,15 @@
   <div class="drag-container">
     <h2>Do zrobienia</h2>
 
+    <div class="sort-buttons">
+      <button mat-button (click)="sort('open', 'priority')">Priorytet
+        <mat-icon>arrow_drop_up</mat-icon>
+      </button>
+      <button mat-button (click)="sort('open', 'date')">Data
+        <mat-icon>arrow_drop_up</mat-icon>
+      </button>
+    </div>
+
     <div cdkDropList #openList="cdkDropList" [cdkDropListData]="open"
          [cdkDropListConnectedTo]="[inProgressList,doneList]" [id]="firstListId"
          class="item-list" (cdkDropListDropped)="drop($event)">
@@ -16,8 +25,12 @@
           <p>{{item.name}}</p>
         </div>
         <div class="details-section">
-          <p>{{item.priority}}</p>
-          <p>{{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
+          <p>
+            <fa-icon [icon]="getIcon(item)" [ngStyle]="{color: getIconColor(item)} "></fa-icon>
+            {{item.priority}}</p>
+          <p>
+            <fa-icon [icon]="clock"></fa-icon>
+            {{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
         </div>
         <div *ngIf="item.description.length !=0">
           <mat-divider></mat-divider>
@@ -30,6 +43,15 @@
   <div class="drag-container">
     <h2>W toku</h2>
 
+    <div class="sort-buttons">
+      <button mat-button (click)="sort('inProgress', 'priority')">Priorytet
+        <mat-icon>arrow_drop_up</mat-icon>
+      </button>
+      <button mat-button (click)="sort('inProgress', 'date')">Data
+        <mat-icon>arrow_drop_up</mat-icon>
+      </button>
+    </div>
+
     <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
          [cdkDropListConnectedTo]="[openList,doneList]" [id]="secondListId"
          class="item-list" (cdkDropListDropped)="drop($event)">
@@ -41,8 +63,12 @@
           <p>{{item.name}}</p>
         </div>
         <div class="details-section">
-          <p>{{item.priority}}</p>
-          <p>{{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
+          <p>
+            <fa-icon [icon]="getIcon(item)" [ngStyle]="{color: getIconColor(item)} "></fa-icon>
+            {{item.priority}}</p>
+          <p>
+            <fa-icon [icon]="clock"></fa-icon>
+            {{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
         </div>
         <div *ngIf="item.description.length !=0">
           <mat-divider></mat-divider>
@@ -55,6 +81,15 @@
   <div class="drag-container">
     <h2>Gotowe</h2>
 
+    <div class="sort-buttons">
+      <button mat-button (click)="sort('done', 'priority')">Priorytet
+        <mat-icon>arrow_drop_up</mat-icon>
+      </button>
+      <button mat-button (click)="sort('done', 'date')">Data
+        <mat-icon>arrow_drop_up</mat-icon>
+      </button>
+    </div>
+
     <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
          [cdkDropListConnectedTo]="[inProgressList,openList]" [id]="thirdListId"
          class="item-list" (cdkDropListDropped)="drop($event)">
@@ -66,8 +101,12 @@
           <p>{{item.name}}</p>
         </div>
         <div class="details-section">
-          <p>{{item.priority}}</p>
-          <p>{{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
+          <p>
+            <fa-icon [icon]="getIcon(item)" [ngStyle]="{color: getIconColor(item)} "></fa-icon>
+            {{item.priority}}</p>
+          <p>
+            <fa-icon [icon]="clock"></fa-icon>
+            {{item.deadline == undefined ? '--/--/--' : item.deadline | date: 'dd.MM.yyyy'}}</p>
         </div>
         <div *ngIf="item.description.length !=0">
           <mat-divider></mat-divider>

@@ -5,6 +5,8 @@ import {TodoService} from '../../services/todo.service';
 import {Status} from '../../models/status';
 import {Priority} from '../../models/priority';
 import {Router} from '@angular/router';
+import {faAngleDoubleUp, faAngleDown, faAngleUp} from '@fortawesome/free-solid-svg-icons';
+import {faClock} from '@fortawesome/free-regular-svg-icons/faClock';
 
 @Component({
   selector: 'app-todo-list',
@@ -21,6 +23,10 @@ export class TodoListComponent implements OnInit {
   secondListId = '1';
   thirdListId = '2';
 
+  major = faAngleDoubleUp;
+  minor = faAngleUp;
+  trivial = faAngleDown;
+  clock = faClock;
 
   constructor(private todoService: TodoService, private router: Router) {
   }
@@ -59,7 +65,6 @@ export class TodoListComponent implements OnInit {
 
   changeStatus(event: CdkDragDrop<Task[]>) {
     let targetStatus: Status;
-
     if (event.container.id === '0') {
       targetStatus = Status.Open;
     } else if (event.container.id === '1') {
@@ -67,7 +72,36 @@ export class TodoListComponent implements OnInit {
     } else {
       targetStatus = Status.Done;
     }
-
     this.todoService.changeStatus(event.container.data[event.currentIndex], targetStatus, event.currentIndex);
+  }
+
+  sort(status: string, sortBy: string) {
+    if (status === 'open') {
+      this.todoService.sort(Status.Open, sortBy);
+    } else if (status === 'inProgress') {
+      this.todoService.sort(Status.InProgress, sortBy);
+    } else {
+      this.todoService.sort(Status.Done, sortBy);
+    }
+  }
+
+  getIcon(item: Task) {
+    if (item.priority === Priority.High) {
+      return this.major;
+    } else if (item.priority === Priority.Medium) {
+      return this.minor;
+    } else {
+      return this.trivial;
+    }
+  }
+
+  getIconColor(item: Task) {
+    if (item.priority === Priority.High) {
+      return 'red';
+    } else if (item.priority === Priority.Medium) {
+      return 'green';
+    } else {
+      return 'gray';
+    }
   }
 }
