@@ -10,22 +10,22 @@ import {BehaviorSubject} from 'rxjs';
 export class TodoService {
 
   open: Task[] = [
-    new Task('Wyprowadzić psa', Status.Open, '', undefined, Priority.High),
-    new Task('Zrobić zakupy', Status.Open, 'testowy opis2', undefined, Priority.High)
+    new Task('Wyprowadzić psa', Status.Open, '', new Date(2020, 7, 20), Priority.High),
+    new Task('Zrobić zakupy', Status.Open, 'testowy opis2', new Date(2020, 7, 29), Priority.High)
   ];
 
   openSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(this.open);
 
   inProgress: Task[] = [
     new Task('Pobawić się z psem', Status.InProgress, 'testowy opis', undefined, Priority.Low),
-    new Task('Iść do apteki', Status.InProgress, '', undefined, Priority.High)
+    new Task('Iść do apteki', Status.InProgress, '', new Date(2020, 8, 2), Priority.High)
   ];
 
   inProgressSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(this.inProgress);
 
   done: Task[] = [
     new Task('Wziąć prysznic', Status.Done, 'testowy opis', undefined, Priority.Medium),
-    new Task('Umyć naczynia', Status.Done, 'testowy opis2', undefined, Priority.Medium)
+    new Task('Umyć naczynia', Status.Done, 'testowy opis2', new Date(2020, 7, 10), Priority.Medium)
   ];
 
   doneSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(this.done);

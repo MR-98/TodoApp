@@ -21,3 +21,9 @@
   display: table-cell;
   margin-right: 10px;
 }
+
+@media (max-width: 900px) {
+  .main-container {
+    width: 80%;
+  }
+}

@@ -2,11 +2,12 @@
   width: 100%;
   margin: 10px auto;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .drag-container {
-  width: 30%;
+  flex-grow: 1;
+  margin: 10px;
   display: inline-block;
   background-color: #ADC698;
   padding: 15px;
@@ -81,4 +82,16 @@
 
 .item-list.cdk-drop-list-dragging .item-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .drag-container {
+    width: 80%;
+    margin: 10px auto;
+  }
 }
