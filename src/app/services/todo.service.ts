@@ -87,19 +87,17 @@ export class TodoService {
 
   compareTodos(todoA: Task, todoB: Task, sortBy: string) {
     if (sortBy === 'date') {
-      if (todoA.deadline === todoB.deadline) {
-        return 0;
-      } else if (todoA.deadline === undefined && todoB.deadline !== undefined) {
+      if(todoA.deadline == undefined) {
         return 1;
-      } else if (todoA.deadline !== undefined && todoB.deadline === undefined) {
+      } else if(todoB.deadline == undefined) {
         return -1;
       } else {
-        return (todoA.deadline.getTime() < todoB.deadline.getTime()) ? -1 : (todoA.deadline.getTime() > todoB.deadline.getTime()) ? 1 : 0;
+        return todoA.deadline.getTime() - todoB.deadline.getTime();
       }
     } else {
       const priorityA = todoA.priority === Priority.High ? 0 : todoA.priority === Priority.Medium ? 1 : 2;
       const priorityB = todoB.priority === Priority.High ? 0 : todoB.priority === Priority.Medium ? 1 : 2;
-      return (priorityA < priorityB) ? -1 : (priorityA > priorityB) ? 1 : 0;
+      return priorityA - priorityB;
     }
   }
 }

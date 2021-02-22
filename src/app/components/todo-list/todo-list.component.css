@@ -9,7 +9,8 @@
   flex-grow: 1;
   margin: 10px;
   display: inline-block;
-  background-color: #ADC698;
+  background-color: #22d1ee;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 15px;
   border-radius: 5px;
 }
@@ -22,10 +23,9 @@
 
 .item-box {
   color: black;
-  background-color: #EBEBD3;
+  background-color: #fff;
   margin-bottom: 2%;
   padding: 5px;
-  border: solid 1px #ccc;
   box-sizing: border-box;
   cursor: move;
   border-radius: 10px;

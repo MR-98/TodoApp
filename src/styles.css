@@ -5,8 +5,6 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   color: white;
-  background: rgb(35,39,76);
-  background: linear-gradient(0deg, rgba(35,39,76,1) 0%, rgba(109,157,197,1) 68%, rgba(174,236,239,1) 100%);
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
